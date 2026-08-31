@@ -6,8 +6,12 @@ namespace SuperTrunfo
 {
     public class Jogador
     {
-        private string nome;
-        private List<Pokemon> baralho;
-
+        public string nome { get; internal set; }
+        public Pokemon pokemon { get; set; }
+        public Jogador( string nome, Pokemon pokemon) {
+            this.nome = nome;
+            this.pokemon = pokemon;
+        }
+       
     }
 }

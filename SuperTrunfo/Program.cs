@@ -39,8 +39,5 @@ Pokemon pokemon4 = new Pokemon
     TipoElemento = Elementos.Fogo // Ajuste conforme necessário
 };
 
-Jogador jogador1 = new Jogador
-{
-    nome = "Jogador 1",
-    baralho = new List<Pokemon> { pokemon1, pokemon2 }
-};
+Jogador jogador1 = new Jogador("Jonas", pokemon1);
+Jogador jogador2 = new Jogador("Myrella", pokemon2);
