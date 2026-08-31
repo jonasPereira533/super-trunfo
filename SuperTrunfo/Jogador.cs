@@ -4,10 +4,10 @@ using System.Text;
 
 namespace SuperTrunfo
 {
-    public enum Elementos
+    public class Jogador
     {
-        Fogo,
-        Planta,
-        Agua,
+        private string nome;
+        private List<Pokemon> baralho;
+
     }
 }
