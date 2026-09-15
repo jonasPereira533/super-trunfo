@@ -51,6 +51,8 @@ namespace SuperTrunfo.Tests
             var resultado = _batalha.IniciarBatalha(pokemon1, pokemon2, ATRIBUTO_ATAQUE);
 
             // Assert
+            Assert.Equal(50m, resultado.ValorJogador1);
+            Assert.Equal(50m, resultado.ValorJogador2);
             Assert.Equal(ResultadoRodada.Empate, resultado.Vencedor);
         }
 
@@ -83,18 +85,21 @@ namespace SuperTrunfo.Tests
         }
 
         [Fact]
-        public void IniciarBatalha_WhenAttributeIsDefesa_UsesDefesaAndNotAtaque()
+        public void IniciarBatalha_WhenAttributeIsDefesa_UsesDefesaAndAppliesTypeMultiplier()
         {
             // Arrange
-            var pokemon1 = new Pokemon { Nome = "Squirtle", TipoElemento = Elementos.Agua, Ataque = 10, Defesa = 80 };
-            var pokemon2 = new Pokemon { Nome = "Wartortle", TipoElemento = Elementos.Agua, Ataque = 90, Defesa = 40 };
+            // Squirtle (Agua) defendendo contra Planta tem desvantagem: 100 x 0,5 = 50.
+            // Bulbasaur (Planta) contra Agua tem vantagem: 10 x 2 = 20.
+            // Se o metodo usasse Ataque em vez de Defesa, o vencedor seria o Jogador 2.
+            var pokemon1 = new Pokemon { Nome = "Squirtle", TipoElemento = Elementos.Agua, Ataque = 10, Defesa = 100 };
+            var pokemon2 = new Pokemon { Nome = "Bulbasaur", TipoElemento = Elementos.Planta, Ataque = 10, Defesa = 10 };
 
             // Act
             var resultado = _batalha.IniciarBatalha(pokemon1, pokemon2, ATRIBUTO_DEFESA);
 
             // Assert
-            Assert.Equal(80m, resultado.ValorJogador1);
-            Assert.Equal(40m, resultado.ValorJogador2);
+            Assert.Equal(50m, resultado.ValorJogador1);
+            Assert.Equal(20m, resultado.ValorJogador2);
             Assert.Equal(ResultadoRodada.Jogador1, resultado.Vencedor);
         }
 

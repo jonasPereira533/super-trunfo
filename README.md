@@ -19,7 +19,7 @@ dotnet test
 ## Regras do jogo
 
 1. Cada jogador digita seu nome e escolhe **3 pokémons** da Pokédex (9 cartas, 3 de cada tipo).
-   Não é permitido escolher a mesma carta duas vezes.
+   Um jogador não pode repetir a mesma carta no próprio baralho (os dois jogadores podem, sim, escolher a mesma carta).
 2. As cartas são jogadas na ordem em que foram escolhidas (o baralho é uma fila, `Queue`).
 3. A cada rodada, os dois jogadores viram uma carta e um atributo é escolhido: **Ataque** ou **Defesa**.
 4. O valor do atributo é multiplicado pela **efetividade do tipo**:
